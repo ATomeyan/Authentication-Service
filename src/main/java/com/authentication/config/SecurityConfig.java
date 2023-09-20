@@ -3,7 +3,6 @@ package com.authentication.config;
 import com.authentication.config.jwt.JwtFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -21,10 +20,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 public class SecurityConfig {
 
-    @Lazy
     private final JwtFilter jwtFilter;
-
-    @Lazy
     private final AuthenticationProvider authenticationProvider;
 
     public SecurityConfig(JwtFilter jwtFilter, AuthenticationProvider authenticationProvider) {
