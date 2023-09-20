@@ -51,9 +51,6 @@ public class User {
     @OneToMany(mappedBy = DBConstants.user, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<UserRoles> userRoles;
 
-    @OneToOne(mappedBy = DBConstants.user, cascade = CascadeType.ALL)
-    private UserToken userToken;
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -65,14 +62,14 @@ public class User {
         return new EqualsBuilder().append(enabled, user.enabled).append(emailVerified, user.emailVerified)
                 .append(id, user.id).append(firstName, user.firstName).append(lastName, user.lastName)
                 .append(username, user.username).append(email, user.email).append(password, user.password)
-                .append(userRoles, user.userRoles).append(userToken, user.userToken).isEquals();
+                .append(userRoles, user.userRoles).isEquals();
     }
 
     @Override
     public int hashCode() {
         return new HashCodeBuilder(17, 37).append(id).append(firstName)
                 .append(lastName).append(username).append(email).append(password).append(enabled)
-                .append(emailVerified).append(userRoles).append(userToken).toHashCode();
+                .append(emailVerified).append(userRoles).toHashCode();
     }
 
     @Override
@@ -87,7 +84,6 @@ public class User {
                 .append("isEnabled", enabled)
                 .append("emailVerified", emailVerified)
                 .append("userRoles", userRoles)
-                .append("userToken", userToken)
                 .toString();
     }
 }

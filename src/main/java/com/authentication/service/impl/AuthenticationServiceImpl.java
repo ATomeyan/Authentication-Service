@@ -90,8 +90,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
         User user = userRepository.findByUsername(request.getUsername()).orElse(null);
 
-        if (user != null) {
-            if (user.isEnabled()) {
+        if (user != null && (user.isEnabled())) {
                 String token = provider.accessTokenGenerator(user);
                 String refreshToken = provider.refreshTokenGenerator(user);
 
@@ -100,7 +99,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                 }
 
                 return new AuthenticationResponse(token, refreshToken);
-            }
+
         }
 
         return null;
