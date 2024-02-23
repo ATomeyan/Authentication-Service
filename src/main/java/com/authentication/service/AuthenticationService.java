@@ -4,8 +4,8 @@ import com.authentication.dto.AuthenticationRequest;
 import com.authentication.dto.AuthenticationResponse;
 import com.authentication.dto.RegistrationRequest;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * @author Artur Tomeyan

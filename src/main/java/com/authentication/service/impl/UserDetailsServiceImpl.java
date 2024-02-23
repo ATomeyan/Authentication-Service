@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -29,7 +30,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(username).orElse(null);
-        Set<Role> roles = Collections.singleton(user.getUserRoles().stream().iterator().next().getRole());
+        Set<Role> roles = Collections.singleton(Objects.requireNonNull(user).getUserRoles().stream().iterator().next().getRole());
 
         Set<GrantedAuthority> authorities = new HashSet<>();
 
