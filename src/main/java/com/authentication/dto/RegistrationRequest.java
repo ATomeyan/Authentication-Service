@@ -4,7 +4,7 @@ import com.authentication.utils.validation.ValidationConstants;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 
-import javax.validation.constraints.*;
+import jakarta.validation.constraints.*;
 import java.io.Serializable;
 
 /**
