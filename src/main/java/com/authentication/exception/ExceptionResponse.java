@@ -1,8 +1,8 @@
 package com.authentication.exception;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.time.LocalDateTime;
@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
  */
 @NoArgsConstructor
 @AllArgsConstructor
-@Setter
+@Getter
 public class ExceptionResponse {
 
     private LocalDateTime dateTime;
