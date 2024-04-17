@@ -1,5 +1,7 @@
 package com.authentication.dto;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 
 import java.io.Serializable;
@@ -15,6 +17,10 @@ import java.io.Serializable;
 @Builder
 public class AuthenticationRequest implements Serializable {
 
+    @NotEmpty
+    @NotBlank
     private String username;
+    @NotEmpty
+    @NotBlank
     private String password;
 }

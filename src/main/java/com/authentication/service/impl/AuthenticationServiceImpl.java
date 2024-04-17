@@ -91,15 +91,14 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         User user = userRepository.findByUsername(request.getUsername()).orElse(null);
 
         if (user != null && (user.isEnabled())) {
-                String token = provider.accessTokenGenerator(user);
-                String refreshToken = provider.refreshTokenGenerator(user);
+            String token = provider.accessTokenGenerator(user);
+            String refreshToken = provider.refreshTokenGenerator(user);
 
-                if (passwordEncoder.matches(request.getPassword(), user.getPassword())) {
-                    authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
-                }
+            if (passwordEncoder.matches(request.getPassword(), user.getPassword())) {
+                authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
+            }
 
-                return new AuthenticationResponse(token, refreshToken);
-
+            return new AuthenticationResponse(token, refreshToken);
         }
 
         return null;
@@ -124,7 +123,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         }
 
         String refreshToken = header.substring(7);
-        String username = provider.getUserNameFromJwtToken(refreshToken);
+        String username = provider.extractUsername(refreshToken);
         if (username != null) {
             User user = userRepository.findByUsername(username).orElseThrow();
 
